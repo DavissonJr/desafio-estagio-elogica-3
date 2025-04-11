@@ -12,27 +12,48 @@ import { FormsModule } from '@angular/forms';
 export class MainContainerComponent implements OnInit {
   email: string = '';
   nome: string = '';
-  estado: string = '';
-  cidade: string = '';
   instituicao: string = '';
 
   estados: string[] = [];
   cidadesDisponiveis: string[] = [];
 
+  // getter e setter para "estado" com lógica embutida (tipo um ngOnChange)
+  private _estado: string = '';
 
-  cidadesPorEstado: { [estado: string]: string[] } = {
-    'SP': ['São Paulo', 'Campinas', 'Santos'],
-    'RJ': ['Rio de Janeiro', 'Niterói', 'Petrópolis'],
-    'PE': ['Recife', 'Vitória de Santo Antão', 'Olinda']
-  };
-
-  ngOnInit(): void {
-    // preenche os estados com base no objeto de cidades ao INICIAR A APLICACAO
-    this.estados = Object.keys(this.cidadesPorEstado);
+  get estado(): string {
+    return this._estado;
   }
 
+  set estado(value: string) {
+    this._estado = value;
+    this.atualizarCidades();
+    console.log(`Estado alterado para: ${value}`); // so p debugar
+  }
+
+  cidade: string = '';
+
+  // objeto que mapeia estados às suas respectivas cidades
+  cidadesPorEstado: { [estado: string]: string[] } = {
+    SP: ['São Paulo', 'Campinas', 'Santos'],
+    RJ: ['Rio de Janeiro', 'Niterói', 'Petrópolis'],
+    PE: ['Recife', 'Vitória de Santo Antão', 'Olinda'],
+  };
+
+  // executado assim que o componente for inicializado
+  ngOnInit(): void {
+    // preenche os estados a partir das chaves do objeto cidadesPorEstado
+    this.estados = Object.keys(this.cidadesPorEstado);
+    alert("BEM VINDO!")
+  }
+
+  // atualiza as cidades disponíveis com base no estado selecionado
   atualizarCidades(): void {
     this.cidadesDisponiveis = this.cidadesPorEstado[this.estado] || [];
-    this.cidade = ''; // limpa a cidade ao trocar de estado
+    this.cidade = ''; // limpa a cidade atual, forçando nova escolha
+  }
+
+  // método chamado no HTML via (ngModelChange) para atualizar o estado
+  onEstadoChange(novoEstado: string): void {
+    this.estado = novoEstado; //atualiza tudo
   }
 }

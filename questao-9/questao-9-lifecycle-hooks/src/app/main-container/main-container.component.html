@@ -4,7 +4,7 @@
   >
     <div class="row shadow rounded-4 overflow-hidden" style="max-width: 900px">
       <!-- Imagem à esquerda -->
-      <div class="col-md-6 d-flexg justify-content-center align-items-center">
+      <div class="col-md-6 d-flex justify-content-center align-items-center">
         <img
           src="assets/sunmoondancing.png"
           alt="Astronauta sentado na lua fazendo símbolo da paz com os dedos"
@@ -58,10 +58,10 @@
                 id="estado"
                 name="estado"
                 [(ngModel)]="estado"
-                (change)="atualizarCidades()"
+                (ngModelChange)="onEstadoChange($event)"
                 required
               >
-                <option value="" disabled selected></option>
+                <option [ngValue]="null" disabled>Selecione um estado</option>
                 @for (est of estados; track est) {
                 <option [value]="est">{{ est }}</option>
                 }
@@ -80,7 +80,7 @@
                 [disabled]="!estado"
                 required
               >
-                <option value="" disabled selected></option>
+                <option [ngValue]="null" disabled>Selecione uma cidade</option>
                 @for (cid of cidadesDisponiveis; track cid) {
                 <option [value]="cid">{{ cid }}</option>
                 }
@@ -103,6 +103,7 @@
             <button
               type="submit"
               class="btn btn-success fw-semibold w-25 mx-auto"
+              [disabled]="!nome || !email || !estado || !cidade"
             >
               Continuar
             </button>
