@@ -1,0 +1,80 @@
+<section class="container mx-auto">
+  <h2 class="mt-3 mx-auto">Suas informações</h2>
+  <form (ngSubmit)="onSubmit()" id="form" #form="ngForm" novalidate>
+    <div class="mb-3">
+      <div>
+        <label for="nameFormControl" class="form-label">Nome</label>
+        <input
+          type="text"
+          class="form-control {{ getClass('nome') }}"
+          id="nameFormControl"
+          placeholder="João da Silva"
+          [(ngModel)]="nome"
+          name="nome"
+          required
+        />
+        @if (!form.controls['nome'].valid && form.submitted) {
+        <div class="invalid-feedback">Nome é obrigatório.</div>
+        }
+      </div>
+
+      <div class="mt-3">
+        <label for="emailFormControl" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control {{ getClass('email') }}"
+          id="emailFormControl"
+          placeholder="name@example.com"
+          [(ngModel)]="email"
+          name="email"
+          required
+        />
+        @if (!form.controls['email'].valid && form.submitted) {
+        <div class="invalid-feedback">Informe um email válido.</div>
+        }
+      </div>
+
+      <div class="mt-3">
+        <label for="telefoneFormControl" class="form-label">Telefone</label>
+        <input
+          type="tel"
+          class="form-control {{ getClass('telefone') }}"
+          id="telefoneFormControl"
+          placeholder="81 98177-6795"
+          [(ngModel)]="telefone"
+          name="telefone"
+          pattern="^\(?\d{2}\)?\s?\d{4,5}-\d{4}$"
+          required
+        />
+        @if (!form.controls['telefone'].valid && form.submitted) {
+        <div class="invalid-feedback">
+          Telefone no formato válido (ex: 99 99999-9999).
+        </div>
+        }
+      </div>
+
+      <div class="mt-3">
+        <label for="dateFormControl" class="form-label">
+          Data de Nascimento
+        </label>
+        <input
+          type="date"
+          class="form-control {{ getClass('dataNascimento') }}"
+          id="dateFormControl"
+          [(ngModel)]="dataNascimento"
+          name="dataNascimento"
+          required
+        />
+        @if (!form.controls['dataNascimento'].valid && form.submitted) {
+        <div class="invalid-feedback">Informe sua data de nascimento.</div>
+        }
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary mt-4 w-100 rounded-0">
+          Next
+        </button>
+      </div>
+    </div>
+  </form>
+</section>
