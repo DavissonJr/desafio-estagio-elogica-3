@@ -44,7 +44,6 @@
           [(ngModel)]="telefone"
           name="telefone"
           mask="00 00000-0000"
-          pattern="^\(?\d{2}\)?\s?\d{4,5}-\d{4}$"
           required
         />
         @if (!form.controls['telefone'].valid && form.submitted) {

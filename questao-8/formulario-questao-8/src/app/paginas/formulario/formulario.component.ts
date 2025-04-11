@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgxMaskDirective],
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
@@ -19,7 +20,6 @@ export class FormularioComponent {
 
   // regex para validação de email e telefone
   emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  telefoneRegex = /^\(?\d{2}\)?\s?\d{4,5}-\d{4}$/;
 
   // validar formulário
   isValid(field: string): boolean {
@@ -29,7 +29,7 @@ export class FormularioComponent {
       case 'email':
         return this.emailRegex.test(this.email);
       case 'telefone':
-        return this.telefoneRegex.test(this.telefone);
+        return this.telefone.trim().length == 11;
       case 'dataNascimento':
         return this.dataNascimento.trim().length > 0;
       default:
@@ -44,17 +44,17 @@ export class FormularioComponent {
 
   onSubmit() {
     this.submitted = true;
-  
+
     const form = document.getElementById('form') as HTMLFormElement;
-  
+
     const allValid = this.isValid('nome') &&
                      this.isValid('email') &&
                      this.isValid('telefone') &&
                      this.isValid('dataNascimento');
-  
+
     if (allValid) {
       alert('formulário válido');
-      form.reset(); 
+      form.reset();
     } else {
       alert('preencha os campos corretamente.');
     }
