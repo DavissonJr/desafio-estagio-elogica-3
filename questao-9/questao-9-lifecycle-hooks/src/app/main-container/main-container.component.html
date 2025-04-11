@@ -1,0 +1,94 @@
+<section class="py-5">
+  <div
+    class="container d-flex justify-content-center align-items-center min-vh-100"
+  >
+    <div class="row shadow rounded-4 overflow-hidden" style="max-width: 900px">
+      <!-- Imagem à esquerda -->
+      <div
+        class="col-md-6 p-4 d-flex justify-content-center align-items-center bg-dark"
+      >
+        <img
+          src="assets/astronauta.jpg"
+          alt="Astronauta sentado na lua fazendo símbolo da paz com os dedos"
+          class="img-fluid"
+        />
+      </div>
+
+      <!-- Formulário à direita -->
+      <div class="col-md-6 p-4">
+        <h4 class="text-center text-danger fw-medium text-uppercase mb-4">
+          Inscrição
+        </h4>
+        <form id="form">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="nome" class="form-label"
+                >Nome<span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                placeholder=""
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label"
+                >Email<span class="text-danger">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder=""
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="estado" class="form-label"
+                >Estado<span class="text-danger">*</span></label
+              >
+              <select class="form-select" id="estado" required>
+                <option value="">PE</option>
+                <option value="">RJ</option>
+                <option value="">SP</option>
+                <!-- Estados -->
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="cidade" class="form-label"
+                >Cidade<span class="text-danger">*</span></label
+              >
+              <select class="form-select" id="cidade" required>
+                <option value="">Recife</option>
+                <option value="">Vitória de Santo Antão</option>
+                <option value="">Olinda</option>
+                <!-- Cidades -->
+              </select>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="instituicao" class="form-label">Instituição</label>
+            <input
+              type="text"
+              class="form-control"
+              id="instituicao"
+              placeholder=""
+            />
+          </div>
+          <div class="d-grid">
+            <button
+              type="submit"
+              class="btn btn-success fw-semibold w-25 mx-auto"
+            >
+              Continuar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

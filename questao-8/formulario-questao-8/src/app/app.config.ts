@@ -5,5 +5,8 @@ import { routes } from './app.routes';
 import { provideEnvironmentNgxMask, provideNgxMask } from 'ngx-mask';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideEnvironmentNgxMask(), provideNgxMask()]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+     provideRouter(routes),
+     provideEnvironmentNgxMask(),
+      provideNgxMask()]
 };
