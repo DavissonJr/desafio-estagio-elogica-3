@@ -1,4 +1,4 @@
-<section class="py-5">
+<section>
   <div
     class="container d-flex justify-content-center align-items-center min-vh-100"
   >
@@ -19,66 +19,88 @@
         <h4 class="text-center text-danger fw-medium text-uppercase mb-4">
           Inscrição
         </h4>
+
         <form id="form">
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="nome" class="form-label"
-                >Nome<span class="text-danger">*</span></label
-              >
+              <label for="nome" class="form-label">
+                Nome<span class="text-danger">*</span>
+              </label>
               <input
                 type="text"
                 class="form-control"
                 id="nome"
-                placeholder=""
+                name="nome"
+                [(ngModel)]="nome"
                 required
               />
             </div>
             <div class="col-md-6 mb-3">
-              <label for="email" class="form-label"
-                >Email<span class="text-danger">*</span></label
-              >
+              <label for="email" class="form-label">
+                Email<span class="text-danger">*</span>
+              </label>
               <input
                 type="email"
                 class="form-control"
                 id="email"
-                placeholder=""
+                name="email"
+                [(ngModel)]="email"
                 required
               />
             </div>
           </div>
+
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="estado" class="form-label"
-                >Estado<span class="text-danger">*</span></label
+              <label for="estado" class="form-label">
+                Estado<span class="text-danger">*</span>
+              </label>
+              <select
+                class="form-select"
+                id="estado"
+                name="estado"
+                [(ngModel)]="estado"
+                (change)="atualizarCidades()"
+                required
               >
-              <select class="form-select" id="estado" required>
-                <option value="">PE</option>
-                <option value="">RJ</option>
-                <option value="">SP</option>
-                <!-- Estados -->
+                <option value="" disabled selected></option>
+                @for (est of estados; track est) {
+                <option [value]="est">{{ est }}</option>
+                }
               </select>
             </div>
+
             <div class="col-md-6 mb-3">
-              <label for="cidade" class="form-label"
-                >Cidade<span class="text-danger">*</span></label
+              <label for="cidade" class="form-label">
+                Cidade<span class="text-danger">*</span>
+              </label>
+              <select
+                class="form-select"
+                id="cidade"
+                name="cidade"
+                [(ngModel)]="cidade"
+                [disabled]="!estado"
+                required
               >
-              <select class="form-select" id="cidade" required>
-                <option value="">Recife</option>
-                <option value="">Vitória de Santo Antão</option>
-                <option value="">Olinda</option>
-                <!-- Cidades -->
+                <option value="" disabled selected></option>
+                @for (cid of cidadesDisponiveis; track cid) {
+                <option [value]="cid">{{ cid }}</option>
+                }
               </select>
             </div>
           </div>
+
           <div class="mb-4">
             <label for="instituicao" class="form-label">Instituição</label>
             <input
               type="text"
               class="form-control"
               id="instituicao"
-              placeholder=""
+              name="instituicao"
+              [(ngModel)]="instituicao"
             />
           </div>
+
           <div class="d-grid">
             <button
               type="submit"
