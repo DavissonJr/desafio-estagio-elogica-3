@@ -16,7 +16,7 @@ export class MainContainerComponent implements OnInit, OnDestroy {
   estados: string[] = [];
   cidadesDisponiveis: string[] = [];
   cidade: string = '';
-  private componentStartTime: Date = new Date(); // corrigido aqui
+  private componentStartTime: Date = new Date();
 
   private _estado: string = '';
 
