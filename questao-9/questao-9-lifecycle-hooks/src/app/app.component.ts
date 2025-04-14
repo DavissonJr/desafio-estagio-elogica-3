@@ -9,4 +9,9 @@ import { MainContainerComponent } from "./main-container/main-container.componen
 })
 export class AppComponent {
   title = 'questao-9-lifecycle-hooks';
+  showForm = true;
+
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
 }
