@@ -38,8 +38,8 @@ export class MainContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.componentStartTime = new Date(); // atualiza na inicialização
+    console.log(`Horário inicializado: ${this.componentStartTime}`)
     this.estados = Object.keys(this.cidadesPorEstado);
-    alert("BEM VINDO!");
   }
 
   atualizarCidades(): void {
@@ -48,7 +48,6 @@ export class MainContainerComponent implements OnInit, OnDestroy {
   }
 
   fecharFormulario() {
-    console.log('Usuário clicou em Cancelar');
     this.limparDados();
   }
 
@@ -67,7 +66,7 @@ export class MainContainerComponent implements OnInit, OnDestroy {
         cidade: this.cidade
       });
 
-      // limpa os dados realmente
+      // limpa os dados
       this.nome = '',
       this.email = '',
       this.instituicao = '',
@@ -76,6 +75,7 @@ export class MainContainerComponent implements OnInit, OnDestroy {
     }
   }
 
+  // chama o lifecycle hook on destroy
   ngOnDestroy(): void {
     this.limparDados();
   }
