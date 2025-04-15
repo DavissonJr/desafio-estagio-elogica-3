@@ -1,3 +1,7 @@
 .rodape{
   background-image: url('/assets/fundo-cabecalho.png');
 }
+
+.rodape-container{
+  --bs-gutter-x: 0
+}
