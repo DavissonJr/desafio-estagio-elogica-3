@@ -77,16 +77,19 @@
 
       <div class="d-flex justify-content-center gap-4">
         <button
-          type="submit"
+          type="button"
           class="btn btn-primary px-5"
           style="background-color: #154580; color: #f0f0f0"
+          (click)="onSubmit()"
         >
           Salvar
         </button>
+
         <button
-          type="reset"
+          type="button"
           class="btn btn-secondary px-5"
           style="background-color: #154580; color: #f0f0f0"
+          (click)="onReset()"
         >
           Cancelar
         </button>

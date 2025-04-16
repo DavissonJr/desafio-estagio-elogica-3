@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormularioService } from '../../shared/services/formulario/formulario.service';
+
 
 @Component({
   selector: 'app-formulario',
@@ -10,11 +12,21 @@ import { CommonModule } from '@angular/common';
   imports: [CardsComponent, FormsModule, CommonModule],
 })
 export class FormularioComponent {
-  form = {
-    pensamento: '',
-    autor: '',
-    modelo: 'modelo1',
-  };
+  constructor(public formularioService: FormularioService) {}
 
-  modelos = ['modelo1', 'modelo2', 'modelo3'];
+  get form() {
+    return this.formularioService.form;
+  }
+
+  get modelos() {
+    return this.formularioService.modelos;
+  }
+
+  onSubmit() {
+    this.formularioService.salvarPensamento();
+  }
+
+  onReset() {
+    this.formularioService.resetForm();
+  }
 }
