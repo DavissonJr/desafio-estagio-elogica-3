@@ -6,7 +6,7 @@ using WebApplication1.Services.Interfaces;
 
 namespace WebApplication1.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/")]
 [ApiController]
 public class AutoresController : ControllerBase
 {
@@ -19,7 +19,7 @@ public class AutoresController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet]
+    [HttpGet("autores")]
     public async Task<IActionResult> GetAutores()
     {
         try
@@ -33,7 +33,7 @@ public class AutoresController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost("autores")]
     public async Task<IActionResult> PostAutor([FromBody] CreateAutorDto autorDto)
     {
         try
@@ -52,7 +52,7 @@ public class AutoresController : ControllerBase
         }
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("autores/{id}")]
     public async Task<IActionResult> PutAutor(int id, [FromBody] CreateAutorDto autorDto)
     {
         try
@@ -71,7 +71,7 @@ public class AutoresController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("autores/{id}")]
     public async Task<IActionResult> DeleteAutor(int id)
     {
         try
