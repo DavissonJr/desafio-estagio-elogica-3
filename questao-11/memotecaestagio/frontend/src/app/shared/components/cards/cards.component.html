@@ -1,9 +1,17 @@
-<div class="card h-100 p-3" [ngClass]="[modelo, sombra]" style="width: 15rem">
+<div
+  class="card h-100 p-3"
+  [ngClass]="[modelo, sombraClasse]"
+  style="width: 15rem"
+>
   <div class="card-body">
     @if (modo === 'formulario') {
     <h5 class="fw-bold mb-2">Prévia</h5>
-    <p class="card-text">{{ pensamento || "Digite seu pensamento..." }}</p>
-    <p class="fw-bold mb-0" style="color: #154580">{{ autor || "Autor(a)" }}</p>
+    <p class="card-text">
+      {{ pensamento || "Digite seu pensamento..." }}
+    </p>
+    <p class="fw-bold mb-0" style="color: #154580">
+      {{ autor || "Autor(a)" }}
+    </p>
     } @else {
     <img class="w-25 mb-3" src="/assets/aspas.png" alt="aspas" />
     <p class="card-text">{{ pensamento }}</p>
