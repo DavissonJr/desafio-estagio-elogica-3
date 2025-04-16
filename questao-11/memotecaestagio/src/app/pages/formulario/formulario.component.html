@@ -1,13 +1,17 @@
 <section class="container-fluid py-5">
-  <h1 class="text-center fw-bold mb-5">Adicione um<br />pensamento novo:</h1>
+  <h1 class="text-center fw-bold mb-5" style="color: #154580">
+    Adicione um<br />pensamento novo:
+  </h1>
 
   <div
-    class="mx-auto p-4 rounded shadow"
-    style="max-width: 800px; background-color: #e6f1fc"
+    class="mx-auto p-4 mb-5 rounded shadow bg-info-subtle"
+    style="max-width: 800px"
   >
     <form>
       <div class="mb-3">
-        <label for="pensamento" class="form-label">Pensamento</label>
+        <label for="pensamento" class="form-labe fw-bold" style="color: #154580"
+          >Pensamento</label
+        >
         <textarea
           class="form-control"
           id="pensamento"
@@ -17,7 +21,9 @@
       </div>
 
       <div class="mb-4">
-        <label for="autor" class="form-label">Autor(a) ou Fonte</label>
+        <label for="autor" class="form-label fw-bold" style="color: #154580"
+          >Autor(a) ou Fonte</label
+        >
         <input
           type="text"
           class="form-control"
@@ -27,55 +33,67 @@
       </div>
 
       <div class="mb-4">
-        <label class="form-label d-block">Selecione o modelo do card:</label>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="modeloCard"
-            id="modelo1"
-            value="modelo1"
-            checked
-          />
-          <label class="form-check-label" for="modelo1">Modelo 1</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="modeloCard"
-            id="modelo2"
-            value="modelo2"
-          />
-          <label class="form-check-label" for="modelo2">Modelo 2</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="modeloCard"
-            id="modelo3"
-            value="modelo3"
-          />
-          <label class="form-check-label" for="modelo3">Modelo 3</label>
-        </div>
-      </div>
-
-      <div class="row text-center mb-4">
-        <div class="col-md-4">
-          <app-cards modo="formulario"></app-cards>
-        </div>
-        <div class="col-md-4">
-          <app-cards modo="formulario"></app-cards>
-        </div>
-        <div class="col-md-4">
-          <app-cards modo="formulario"></app-cards>
+        <label class="form-label d-block fw-bold" style="color: #154580"
+          >Selecione o modelo do card:</label
+        >
+        <div class="d-flex justify-content-around">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="modeloCard"
+              id="modelo1"
+              value="modelo1"
+              checked
+            />
+            <label class="form-check-label" for="modelo1">Modelo 1</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="modeloCard"
+              id="modelo2"
+              value="modelo2"
+            />
+            <label class="form-check-label" for="modelo2">Modelo 2</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="modeloCard"
+              id="modelo3"
+              value="modelo3"
+            />
+            <label class="form-check-label" for="modelo3">Modelo 3</label>
+          </div>
         </div>
       </div>
 
-      <div class="d-flex justify-content-center gap-3">
-        <button type="submit" class="btn btn-primary px-4">Salvar</button>
-        <button type="reset" class="btn btn-secondary px-4">Cancelar</button>
+      <div
+        class="mb-4 justify-content-center align-items-center d-flex gap-3 flex-column flex-lg-row"
+      >
+        <app-cards modo="formulario"></app-cards>
+        <app-cards modo="formulario"></app-cards>
+        <app-cards modo="formulario"></app-cards>
+      </div>
+
+      <div class="d-flex justify-content-center gap-4">
+        <button
+          type="submit"
+          class="btn btn-primary px-5"
+          style="background-color: #154580; color: #f0f0f0"
+        >
+          Salvar
+        </button>
+        <button
+          type="reset"
+          class="btn btn-secondary px-5"
+          style="background-color: #154580; color: #f0f0f0"
+        >
+          Cancelar
+        </button>
       </div>
     </form>
   </div>
