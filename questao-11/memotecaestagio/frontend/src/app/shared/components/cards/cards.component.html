@@ -7,16 +7,16 @@
     @if (modo === 'formulario') {
     <h5 class="fw-bold mb-2">Prévia</h5>
     <p class="card-text">
-      {{ pensamento || "Digite seu pensamento..." }}
+      {{ autor || "Digite seu pensamento..." }}
     </p>
     <p class="fw-bold mb-0" style="color: #154580">
-      {{ autor || "Autor(a)" }}
+      {{ pensamento || "Autor(a)" }}
     </p>
     } @else { @if (modelo === 'modelo2') {
     <img class="w-25 mb-3" src="/assets/aspas.png" alt="aspas" />
-    <p class="card-text">{{ pensamento }}</p>
+    <p class="card-text">{{ autor }}</p>
     <div class="d-flex justify-content-between">
-      <p class="text-primary mb-0">{{ autor }}</p>
+      <p class="text-primary mb-0">{{ pensamento }}</p>
       <div>
         <a href="#" class="card-link"><i class="bi bi-pencil"></i></a>
         <a href="#" class="card-link"><i class="bi bi-trash"></i></a>
@@ -24,9 +24,9 @@
     </div>
     } @else {
     <img class="w-25 mb-3" src="/assets/aspas.png" alt="aspas" />
-    <p class="card-text">{{ pensamento }}</p>
+    <p class="card-text">{{ autor }}</p>
     <div class="d-flex justify-content-between">
-      <p class="text-primary mb-0">{{ autor }}</p>
+      <p class="text-primary mb-0">{{ pensamento }}</p>
       <div>
         <a href="#" class="card-link"><i class="bi bi-pencil"></i></a>
         <a href="#" class="card-link"><i class="bi bi-trash"></i></a>
