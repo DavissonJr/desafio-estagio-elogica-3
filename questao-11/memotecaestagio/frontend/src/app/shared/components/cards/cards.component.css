@@ -3,13 +3,13 @@
 }
 
 .shadow-blue-dark {
-  box-shadow: 0 0.5rem 1rem rgba(21, 69, 128, 0.6);
+  box-shadow: 0.4rem 0.4rem .2rem rgba(21, 69, 128, 0.6);
 }
 
 .shadow-blue-light {
-  box-shadow: 0 0.5rem 1rem rgba(173, 216, 230, 0.7);
+  box-shadow: 0.4rem .4rem .2rem rgb(84, 238, 244);
 }
 
 .shadow-green {
-  box-shadow: 0 0.5rem 1rem rgba(0, 128, 0, 0.5);
+  box-shadow: 0.4rem 0.4rem .2rem rgba(0, 128, 0, 0.5);
 }
