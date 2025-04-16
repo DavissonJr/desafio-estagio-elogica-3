@@ -17,19 +17,32 @@ builder.Services.AddScoped<IDbConnection>(provider =>
     return connection;
 });
 
-// Configuração do AutoMapper
+// ConfiguraÃ§Ã£o do AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// Configuração dos serviços e repositórios
+// ConfiguraÃ§Ã£o dos serviÃ§os e repositÃ³rios
 builder.Services.AddScoped<IAutorService, AutorService>();
 builder.Services.AddScoped<IAutorRepository, AutorRepository>();
 
-// Configuração do controller com suporte a camelCase e case-insensitive no JSON
+//cors para habilitar js
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // permite Angular
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// ConfiguraÃ§Ã£o do controller com suporte a camelCase e case-insensitive no JSON
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     });
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -42,7 +55,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
