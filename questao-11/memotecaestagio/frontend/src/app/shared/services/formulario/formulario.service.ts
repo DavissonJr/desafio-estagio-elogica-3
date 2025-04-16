@@ -44,7 +44,6 @@ export class FormularioService {
       const response = await lastValueFrom(
         this.http.post('https://localhost:7015/api/autores', payload)
       );
-      // Atualiza mural
       this.muralService.adicionarPensamento(this._form);
       this.resetForm();
     } catch (error) {

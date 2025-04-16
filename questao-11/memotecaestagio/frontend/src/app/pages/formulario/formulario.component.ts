@@ -3,15 +3,19 @@ import { CardsComponent } from '../../shared/components/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormularioService } from '../../shared/services/formulario/formulario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
+  imports: [CommonModule, FormsModule, CardsComponent],
   templateUrl: './formulario.component.html',
-  imports: [CardsComponent, FormsModule, CommonModule],
+  styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
-  constructor(public formularioService: FormularioService) {}
+  constructor(public formularioService: FormularioService,
+    private router: Router
+  ) {}
 
   cardsEstilos = [
     { sombra: 'shadow-blue-dark' },
@@ -29,6 +33,7 @@ export class FormularioComponent {
 
   onSubmit() {
     this.formularioService.salvarPensamento();
+    this.router.navigate(['/mural']);
   }
 
   onReset() {
