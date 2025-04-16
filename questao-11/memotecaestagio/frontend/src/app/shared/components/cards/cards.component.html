@@ -12,6 +12,16 @@
     <p class="fw-bold mb-0" style="color: #154580">
       {{ autor || "Autor(a)" }}
     </p>
+    } @else { @if (modelo === 'modelo2') {
+    <img class="w-25 mb-3" src="/assets/aspas.png" alt="aspas" />
+    <p class="card-text">{{ pensamento }}</p>
+    <div class="d-flex justify-content-between">
+      <p class="text-primary mb-0">{{ autor }}</p>
+      <div>
+        <a href="#" class="card-link"><i class="bi bi-pencil"></i></a>
+        <a href="#" class="card-link"><i class="bi bi-trash"></i></a>
+      </div>
+    </div>
     } @else {
     <img class="w-25 mb-3" src="/assets/aspas.png" alt="aspas" />
     <p class="card-text">{{ pensamento }}</p>
@@ -22,6 +32,6 @@
         <a href="#" class="card-link"><i class="bi bi-trash"></i></a>
       </div>
     </div>
-    }
+    } }
   </div>
 </div>
