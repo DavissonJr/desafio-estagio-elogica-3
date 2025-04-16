@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MuralService } from '../../shared/services/mural/mural.service';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
-import { NgIf, NgFor } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -11,8 +10,12 @@ import { RouterModule } from '@angular/router';
   templateUrl: './mural.component.html',
   styleUrl: './mural.component.css'
 })
-export class MuralComponent {
+export class MuralComponent implements OnInit {
   constructor(public muralService: MuralService) {}
+
+  async ngOnInit() {
+    await this.muralService.carregarPensamentos();
+  }
 
   pensamentos() {
     return this.muralService.pensamentos;

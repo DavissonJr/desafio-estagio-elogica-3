@@ -14,6 +14,7 @@ export class FormularioService {
   };
 
   private _modelos = ['modelo1', 'modelo2', 'modelo3'];
+  private readonly apiUrl = 'https://localhost:7015/api/autores'
 
   constructor(private http: HttpClient, private muralService: MuralService) {}
 
@@ -42,7 +43,7 @@ export class FormularioService {
 
     try {
       const response = await lastValueFrom(
-        this.http.post('https://localhost:7015/api/autores', payload)
+        this.http.post(this.apiUrl, payload)
       );
       this.muralService.adicionarPensamento(this._form);
       this.resetForm();
