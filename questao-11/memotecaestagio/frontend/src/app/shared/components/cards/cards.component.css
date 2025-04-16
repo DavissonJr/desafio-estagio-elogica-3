@@ -1,3 +1,15 @@
 #card-container{
   box-shadow: 5px 5px 5px rgb(8, 225, 249);
 }
+
+.shadow-blue-dark {
+  box-shadow: 0 0.5rem 1rem rgba(21, 69, 128, 0.6);
+}
+
+.shadow-blue-light {
+  box-shadow: 0 0.5rem 1rem rgba(173, 216, 230, 0.7);
+}
+
+.shadow-green {
+  box-shadow: 0 0.5rem 1rem rgba(0, 128, 0, 0.5);
+}

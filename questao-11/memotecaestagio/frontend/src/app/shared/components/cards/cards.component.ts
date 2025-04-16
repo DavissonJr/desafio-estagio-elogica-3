@@ -13,4 +13,5 @@ export class CardsComponent {
   @Input() pensamento: string = '';
   @Input() autor: string = '';
   @Input() modelo: string = 'modelo1';
+  @Input() sombra: string = '';
 }

@@ -73,12 +73,13 @@
       <div
         class="mb-4 justify-content-center align-items-center d-flex gap-3 flex-column flex-lg-row"
       >
-        @for (_ of [1, 2, 3]; track _) {
+        @for (card of cardsEstilos; track card) {
         <app-cards
           modo="formulario"
           [pensamento]="form.pensamento"
           [autor]="form.autor"
           [modelo]="form.modelo"
+          [sombra]="card.sombra"
         />
         }
       </div>

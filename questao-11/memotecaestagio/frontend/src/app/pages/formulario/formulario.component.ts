@@ -14,6 +14,12 @@ import { FormularioService } from '../../shared/services/formulario/formulario.s
 export class FormularioComponent {
   constructor(public formularioService: FormularioService) {}
 
+  cardsEstilos = [
+    { sombra: 'shadow-blue-dark' },
+    { sombra: 'shadow-blue-light' },
+    { sombra: 'shadow-green' },
+  ];
+
   get form() {
     return this.formularioService.form;
   }
