@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { CardsComponent } from "../../shared/components/cards/cards.component";
+import { MuralService } from '../../shared/services/mural/mural.service';
+import { CardsComponent } from '../../shared/components/cards/cards.component';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-mural',
+  standalone: true,
   imports: [CardsComponent],
   templateUrl: './mural.component.html',
   styleUrl: './mural.component.css'
 })
 export class MuralComponent {
+  constructor(public muralService: MuralService) {}
 
+  pensamentos() {
+    return this.muralService.pensamentos;
+  }
 }

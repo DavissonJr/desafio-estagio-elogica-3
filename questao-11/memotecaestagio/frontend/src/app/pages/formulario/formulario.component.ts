@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormularioService } from '../../shared/services/formulario/formulario.service';
 
-
 @Component({
   selector: 'app-formulario',
   standalone: true,

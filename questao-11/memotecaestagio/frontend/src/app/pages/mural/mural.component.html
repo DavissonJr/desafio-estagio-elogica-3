@@ -5,8 +5,19 @@
     <h1 class="text-center mt-4">Meu mural</h1>
     <button type="button" class="btn mt-4 mb-3">Adicionar pensamentos</button>
   </div>
+
   <div
     class="d-flex mx-auto justify-content-center align-items-center flex-wrap gap-4"
     style="max-width: 1024px"
-  ></div>
+  >
+    @for (pensamento of pensamentos(); track pensamento) {
+    <app-cards
+      [pensamento]="pensamento.pensamento"
+      [autor]="pensamento.autor"
+      [modelo]="pensamento.modelo"
+      [modo]="'mural'"
+      sombra="shadow-blue-light"
+    ></app-cards>
+    }
+  </div>
 </section>
