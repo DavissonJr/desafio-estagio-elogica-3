@@ -10,7 +10,7 @@ export class FormularioService {
     modelo: 'modelo1',
   };
 
-  private _modelos = ['modelo1', 'modelo2', 'modelo3'];
+  private _modelos = ['modelo 1', 'modelo 2', 'modelo 3'];
 
   get form() {
     return this._form;
@@ -29,7 +29,7 @@ export class FormularioService {
   }
 
   salvarPensamento() {
-    // Aqui você pode adicionar lógica para salvar, ex: via API ou LocalStorage
+    // consumo da API
     console.log('Pensamento salvo:', this._form);
   }
 }
