@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
-import { CardsComponent } from "../../shared/components/cards/cards.component";
+import { CardsComponent } from '../../shared/components/cards/cards.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formulario',
-  imports: [CardsComponent],
+  standalone: true,
   templateUrl: './formulario.component.html',
-  styleUrl: './formulario.component.css'
+  imports: [CardsComponent, FormsModule, CommonModule],
 })
 export class FormularioComponent {
+  form = {
+    pensamento: '',
+    autor: '',
+    modelo: 'modelo1',
+  };
 
+  modelos = ['modelo1', 'modelo2', 'modelo3'];
 }
