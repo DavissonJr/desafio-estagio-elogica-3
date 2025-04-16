@@ -1,17 +1,30 @@
-<div class="col-12 col-md-6 col-lg-4 mb-4" id="card-container" style="width: 18rem">
+<div
+  class="col-12 col-md-6 col-lg-4 mb-4"
+  id="card-container"
+  style="width: 18rem"
+>
   <div class="card h-100">
     <div class="card-body">
-      <img class="w-25 mb-3" src="/assets/aspas.png" alt="" />
+      @if (modo === 'formulario') {
+      <h5 class="fw-bold mb-2">Prévia</h5>
+      <p class="card-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt.
+      </p>
+      <p class="fw-bold text-primary mb-0">Autora da Silva Sauro</p>
+      } @else {
+      <img class="w-25 mb-3" src="/assets/aspas.png" alt="aspas" />
       <p class="card-text">
         Some quick example text to build on the card title.
       </p>
       <div class="d-flex justify-content-between">
-        <p class="text-primary">Autor</p>
+        <p class="text-primary mb-0">Autor</p>
         <div>
           <a href="#" class="card-link"><i class="bi bi-pencil"></i></a>
           <a href="#" class="card-link"><i class="bi bi-trash"></i></a>
         </div>
       </div>
+      }
     </div>
   </div>
 </div>
