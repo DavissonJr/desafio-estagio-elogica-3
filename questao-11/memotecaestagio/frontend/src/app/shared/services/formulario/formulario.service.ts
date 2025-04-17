@@ -14,7 +14,7 @@ export class FormularioService {
   };
 
   private _modelos = ['modelo1', 'modelo2', 'modelo3'];
-  private readonly apiUrl = 'https://localhost:7015/api/autores'
+  private readonly apiUrl = 'https://localhost:7015/api/autores';
 
   constructor(private http: HttpClient, private muralService: MuralService) {}
 
