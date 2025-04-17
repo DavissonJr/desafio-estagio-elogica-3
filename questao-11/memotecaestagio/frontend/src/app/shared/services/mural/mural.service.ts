@@ -1,21 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { Pensamento, PensamentoResponse } from '../../interfaces/Pensamento';
 
-export interface Pensamento {
-  id?: number;
-  pensamento: string;
-  autor: string;
-  modelo: string;
-}
 
-// Tipo que representa a resposta da API
-interface PensamentoResponse {
-  id: number;
-  pensamento: string;
-  autorNome: string;
-  modelo: number;
-}
 
 @Injectable({
   providedIn: 'root'
