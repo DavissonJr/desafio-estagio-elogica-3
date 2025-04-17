@@ -16,8 +16,8 @@ export class MuralService {
     return this._pensamentos;
   }
 
-  adicionarPensamento(p: Pensamento) {
-    this._pensamentos.push(p);
+  adicionarPensamento(pensamento: Pensamento) {
+    this._pensamentos.push(pensamento);
   }
 
   async carregarPensamentos() {
