@@ -17,7 +17,7 @@
     class="d-flex mx-auto justify-content-center align-items-center flex-wrap gap-4"
     style="max-width: 1024px"
   >
-    @for (pensamento of pensamentos(); track pensamento) {
+    @for (pensamento of pensamentosPaginados(); track pensamento) {
     <app-cards
       [pensamento]="pensamento.pensamento"
       [autor]="pensamento.autor"
@@ -27,5 +27,23 @@
       (excluir)="excluirPensamento($event)"
     ></app-cards>
     }
+  </div>
+
+  <div class="d-flex justify-content-between mt-4">
+    <button
+      class="btn btn-secondary"
+      (click)="paginaAnterior()"
+      [disabled]="!temPaginaAnterior()"
+    >
+      Anterior
+    </button>
+
+    <button
+      class="btn btn-primary"
+      (click)="proximaPagina()"
+      [disabled]="!temProximaPagina()"
+    >
+      Próximo
+    </button>
   </div>
 </section>
