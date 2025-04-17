@@ -20,4 +20,8 @@ export class MuralComponent implements OnInit {
   pensamentos() {
     return this.muralService.pensamentos;
   }
+
+  async excluirPensamento(id: number) {
+    await this.muralService.excluirPensamento(id);
+  }
 }

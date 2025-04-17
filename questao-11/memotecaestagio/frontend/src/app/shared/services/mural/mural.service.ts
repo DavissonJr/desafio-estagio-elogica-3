@@ -1,9 +1,8 @@
+// mural.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { Pensamento, PensamentoResponse } from '../../interfaces/Pensamento';
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +34,17 @@ export class MuralService {
       }));
     } catch (error) {
       console.error('Erro ao carregar pensamentos:', error);
+    }
+  }
+
+  async excluirPensamento(id: number) {
+    try {
+      await lastValueFrom(
+        this.http.delete(`https://localhost:7015/api/autores/${id}`)
+      );
+      this._pensamentos = this._pensamentos.filter(p => p.id !== id);
+    } catch (error) {
+      console.error('Erro ao excluir pensamento:', error);
     }
   }
 

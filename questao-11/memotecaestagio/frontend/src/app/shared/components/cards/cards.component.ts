@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
 @Component({
@@ -15,7 +15,17 @@ export class CardsComponent {
   @Input() autor: string = '';
   @Input() modelo: string = 'modelo1';
   @Input() sombra: string = '';
+  @Input() id?: number;
 
-  get sombraClasse() { return this.sombra || ''; }
+  @Output() excluir = new EventEmitter<number>();
+
+  get sombraClasse() {
+    return this.sombra || '';
+  }
+
+  onExcluir() {
+    if (this.id !== undefined) {
+      this.excluir.emit(this.id);
+    }
+  }
 }
-

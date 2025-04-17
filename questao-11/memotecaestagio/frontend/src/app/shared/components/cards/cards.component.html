@@ -24,36 +24,30 @@
     <p class="fw-bold mb-0" style="color: #154580">
       {{ pensamento || "Autor(a)" }}
     </p>
-    } @else { @if (modelo === 'modelo1') {
-    <img class="w-25 mb-3" src="/assets/apsasdarkblue.png" alt="aspas" />
+    } @else {
+    <img
+      class="w-25 mb-3"
+      [src]="
+        modelo === 'modelo1'
+          ? '/assets/apsasdarkblue.png'
+          : modelo === 'modelo2'
+          ? '/assets/aspas.png'
+          : modelo === 'modelo3'
+          ? '/assets/aspasgreen.png'
+          : ''
+      "
+      alt="aspas"
+    />
     <p class="card-text">{{ autor }}</p>
     <div class="d-flex justify-content-between">
       <p class="text-primary mb-0">{{ pensamento }}</p>
       <div>
         <a href="#" class="card-link"><i class="bi bi-pencil"></i></a>
-        <a href="#" class="card-link"><i class="bi bi-trash"></i></a>
+        <a href="#" class="card-link" (click)="onExcluir()">
+          <i class="bi bi-trash"></i>
+        </a>
       </div>
     </div>
-    } @else { @if (modelo === 'modelo2') {
-    <img class="w-25 mb-3" src="/assets/aspas.png" alt="aspas" />
-    <p class="card-text">{{ autor }}</p>
-    <div class="d-flex justify-content-between">
-      <p class="text-primary mb-0">{{ pensamento }}</p>
-      <div>
-        <a href="#" class="card-link"><i class="bi bi-pencil"></i></a>
-        <a href="#" class="card-link"><i class="bi bi-trash"></i></a>
-      </div>
-    </div>
-    } @else { @if (modelo === 'modelo3') {
-    <img class="w-25 mb-3" src="/assets/aspasgreen.png" alt="aspas" />
-    <p class="card-text">{{ autor }}</p>
-    <div class="d-flex justify-content-between">
-      <p class="text-primary mb-0">{{ pensamento }}</p>
-      <div>
-        <a href="#" class="card-link"><i class="bi bi-pencil"></i></a>
-        <a href="#" class="card-link"><i class="bi bi-trash"></i></a>
-      </div>
-    </div>
-    } } } }
+    }
   </div>
 </div>
