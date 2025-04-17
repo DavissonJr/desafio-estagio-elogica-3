@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormularioService } from '../../shared/services/formulario/formulario.service';
 import { Router, RouterModule } from '@angular/router';
+import { ModalService } from '../../shared/services/modal/modal.service';
+
 
 @Component({
   selector: 'app-formulario',
@@ -14,7 +16,8 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class FormularioComponent {
   constructor(public formularioService: FormularioService,
-    private router: Router
+    private router: Router,
+    public modalService: ModalService
   ) {}
 
   cardsEstilos = [
@@ -31,8 +34,14 @@ export class FormularioComponent {
     return this.formularioService.modelos;
   }
 
-  onSubmit() {
-    this.formularioService.salvarPensamento();
+  async onSubmit() {
+    const sucesso = await this.formularioService.salvarPensamento();
+    if (sucesso) {
+      this.modalService.showSuccessModal();
+    }
+    else {
+      this.modalService.showErrorModal();
+    }
   }
 
   onReset() {

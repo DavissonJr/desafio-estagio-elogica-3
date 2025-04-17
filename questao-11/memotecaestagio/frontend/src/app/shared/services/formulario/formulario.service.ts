@@ -34,7 +34,7 @@ export class FormularioService {
     };
   }
 
-  async salvarPensamento() {
+  async salvarPensamento(): Promise<boolean> {
     const payload = {
       pensamento: this._form.pensamento,
       autorNome: this._form.autor,
@@ -47,8 +47,15 @@ export class FormularioService {
       );
       this.muralService.adicionarPensamento(this._form);
       this.resetForm();
-    } catch (error) {
+      return true; //certo
+    } catch (error: any) {
       console.error('Erro ao salvar pensamento:', error);
+
+      if (error.status === 400) {
+        console.warn('Erro 400: dados inválidos');
+      }
+
+      return false; //erro
     }
   }
 
