@@ -17,6 +17,7 @@ export class CardsComponent {
   @Input() sombra: string = '';
   @Input() id?: number;
 
+  // enviar do fi p pai passando o numero que vai ser o id que vai deletar 
   @Output() excluir = new EventEmitter<number>();
 
   get sombraClasse() {
