@@ -23,6 +23,7 @@ export class MuralComponent implements OnInit {
   pensamentosPaginados() {
     const inicio = this.paginaAtual * this.itensPorPagina;
     const fim = inicio + this.itensPorPagina;
+    //slice -> "fatiar o array"
     return this.muralService.pensamentos.slice(inicio, fim);
   }
 
@@ -49,7 +50,8 @@ export class MuralComponent implements OnInit {
   async excluirPensamento(id: number) {
     await this.muralService.excluirPensamento(id);
 
-    // Se você estiver na última página e excluir tudo dela, volta para a anterior
+    // se você estiver na última página e excluir tudo dela, volta para a anterior
+    // math.ceil() arredonda um número para cima, ou seja, para o próximo inteiro maior ou igual ao número original
     const totalPaginas = Math.ceil(this.muralService.pensamentos.length / this.itensPorPagina);
     if (this.paginaAtual >= totalPaginas) {
       this.paginaAtual = Math.max(0, totalPaginas - 1);
