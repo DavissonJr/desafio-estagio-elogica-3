@@ -52,18 +52,20 @@ public class AutoresController : ControllerBase
         }
     }
 
-    [HttpPut("autores/{id}")]
+        [HttpPut("autores/{id}")]
     public async Task<IActionResult> PutAutor(int id, [FromBody] CreateAutorDto autorDto)
     {
         try
         {
             var autor = _mapper.Map<Autor>(autorDto);
+            autor.Id = id;
             var result = await _autorService.AtualizarAutores(autor);
-            if (result == null)
+
+            if (!result)
             {
-                return NotFound();
+                return NotFound(); 
             }
-            return Ok(result);
+            return Ok(); 
         }
         catch (Exception)
         {
