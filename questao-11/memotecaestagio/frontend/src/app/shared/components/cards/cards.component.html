@@ -42,7 +42,9 @@
     <div class="d-flex justify-content-between">
       <p class="text-primary mb-0">{{ pensamento }}</p>
       <div>
-        <a href="#" class="card-link"><i class="bi bi-pencil"></i></a>
+        <a class="card-link" (click)="onEditar()">
+          <i class="bi bi-pencil"></i>
+        </a>
         <a class="card-link" (click)="showExcludeModal()">
           <i class="bi bi-trash"></i>
         </a>

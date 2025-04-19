@@ -7,13 +7,19 @@ import { lastValueFrom } from 'rxjs';
   providedIn: 'root',
 })
 export class FormularioService {
-  private _form = {
+  private _form: {
+    id?: number;
+    pensamento: string;
+    autor: string;
+    modelo: string;
+  } = {
     pensamento: '',
     autor: '',
     modelo: 'modelo1',
   };
 
   private _modelos = ['modelo1', 'modelo2', 'modelo3'];
+
   private readonly apiUrl = 'https://localhost:7015/api/autores';
 
   constructor(private http: HttpClient, private muralService: MuralService) {}
@@ -34,6 +40,16 @@ export class FormularioService {
     };
   }
 
+  setForm(dados: {
+    id?: number;
+    pensamento: string;
+    autor: string;
+    modelo: string;
+  }) {
+    console.log('📋 SET FORM:', dados);
+    this._form = { ...dados };
+  }
+
   async salvarPensamento(): Promise<boolean> {
     const payload = {
       pensamento: this._form.pensamento,
@@ -41,21 +57,46 @@ export class FormularioService {
       modelo: this.modeloParaNumero(this._form.modelo),
     };
 
-    try {
-      const response = await lastValueFrom(
-        this.http.post(this.apiUrl, payload)
-      );
-      this.muralService.adicionarPensamento(this._form);
-      this.resetForm();
-      return true; //certo
-    } catch (error: any) {
-      console.error('Erro ao salvar pensamento:', error);
+    const isEdicao = this._form.id !== undefined;
 
-      if (error.status === 400) {
-        console.warn('Erro 400: dados inválidos');
+    try {
+      if (isEdicao) {
+        // Atualiza no backend
+        await lastValueFrom(
+          this.http.put(`${this.apiUrl}/${this._form.id}`, payload)
+        );
+
+        // Atualiza no frontend
+        this.muralService.atualizarPensamento({
+          id: this._form.id,
+          pensamento: this._form.pensamento,
+          autor: this._form.autor,
+          modelo: this._form.modelo,
+        });
+
+
+        await this.muralService.carregarPensamentos();
+      } else {
+
+        const response = await lastValueFrom(
+          this.http.post(this.apiUrl, payload)
+        );
+
+
+        this.muralService.adicionarPensamento({
+          id: (response as any).id,
+          pensamento: this._form.pensamento,
+          autor: this._form.autor,
+          modelo: this._form.modelo,
+        });
       }
 
-      return false; //erro
+      this.resetForm();
+
+      return true;
+    } catch (error: any) {
+      console.error('Erro ao salvar pensamento:', error);
+      return false;
     }
   }
 

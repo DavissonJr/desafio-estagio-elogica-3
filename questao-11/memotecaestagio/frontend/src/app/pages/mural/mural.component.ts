@@ -1,23 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { MuralService } from '../../shared/services/mural/mural.service';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { FormularioService } from '../../shared/services/formulario/formulario.service';
 
 @Component({
   selector: 'app-mural',
   standalone: true,
   imports: [CardsComponent, RouterModule],
   templateUrl: './mural.component.html',
-  styleUrl: './mural.component.css'
+  styleUrl: './mural.component.css',
 })
 export class MuralComponent implements OnInit {
   paginaAtual = 0;
   itensPorPagina = 6;
 
-  constructor(public muralService: MuralService) {}
+  constructor(
+    public muralService: MuralService,
+    private formularioService: FormularioService,
+    public router: Router
+  ) {}
 
   async ngOnInit() {
     await this.muralService.carregarPensamentos();
+  }
+
+  editarPensamento(dados: {
+    id?: number;
+    pensamento: string;
+    autor: string;
+    modelo: string;
+  }) {
+    this.formularioService.setForm(dados);
+    this.router.navigate(['/formulario']);
   }
 
   pensamentosPaginados() {
@@ -40,7 +55,10 @@ export class MuralComponent implements OnInit {
   }
 
   temProximaPagina() {
-    return (this.paginaAtual + 1) * this.itensPorPagina < this.muralService.pensamentos.length;
+    return (
+      (this.paginaAtual + 1) * this.itensPorPagina <
+      this.muralService.pensamentos.length
+    );
   }
 
   temPaginaAnterior() {
@@ -52,7 +70,9 @@ export class MuralComponent implements OnInit {
 
     // se você estiver na última página e excluir tudo dela, volta para a anterior
     // math.ceil() arredonda um número para cima, ou seja, para o próximo inteiro maior ou igual ao número original
-    const totalPaginas = Math.ceil(this.muralService.pensamentos.length / this.itensPorPagina);
+    const totalPaginas = Math.ceil(
+      this.muralService.pensamentos.length / this.itensPorPagina
+    );
     if (this.paginaAtual >= totalPaginas) {
       this.paginaAtual = Math.max(0, totalPaginas - 1);
     }
