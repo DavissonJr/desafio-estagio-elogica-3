@@ -63,7 +63,11 @@ export class FormularioService {
       if (isEdicao) {
         // Atualiza no backend
         await lastValueFrom(
-          this.http.put(`${this.apiUrl}/${this._form.id}`, payload)
+          this.http.put(`${this.apiUrl}/${this._form.id}`, {
+            pensamento: this._form.autor,
+            autorNome: this._form.pensamento,
+            modelo: this.modeloParaNumero(this._form.modelo),
+          })
         );
 
         // Atualiza no frontend
@@ -74,14 +78,11 @@ export class FormularioService {
           modelo: this._form.modelo,
         });
 
-
         await this.muralService.carregarPensamentos();
       } else {
-
         const response = await lastValueFrom(
           this.http.post(this.apiUrl, payload)
         );
-
 
         this.muralService.adicionarPensamento({
           id: (response as any).id,

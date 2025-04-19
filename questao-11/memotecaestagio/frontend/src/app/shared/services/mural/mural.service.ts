@@ -52,7 +52,7 @@ export class MuralService {
         modelo: `modelo${p.modelo + 1}`,
       }));
 
-      console.log('Pensamentos carregados: ', this._pensamentos); 
+      console.log('Pensamentos carregados: ', this._pensamentos);
     } catch (error) {
       console.error('Erro ao carregar pensamentos:', error);
     }
