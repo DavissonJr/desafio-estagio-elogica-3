@@ -11,6 +11,7 @@ import { ModalService } from '../../services/modal/modal.service';
   styleUrls: ['./cards.component.css'],
 })
 export class CardsComponent {
+  // input = envia do pai pro filho
   @Input() modo: 'mural' | 'formulario' = 'mural';
   @Input() pensamento: string = '';
   @Input() autor: string = '';
@@ -20,7 +21,7 @@ export class CardsComponent {
 
   constructor(private modalService: ModalService) {}
 
-  // enviar do fi p pai passando o numero que vai ser o id que vai deletar
+  // output = envia do filho do pro pai
   @Output() excluir = new EventEmitter<number>();
   @Output() editar = new EventEmitter<{
     id?: number;
